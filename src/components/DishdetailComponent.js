@@ -37,7 +37,7 @@ const minLength = (len) => (val) => val && (val.length >= len);
         handleSubmit(values) {
             console.log('Current State is: ' + JSON.stringify(values));
             alert('Current State is: ' + JSON.stringify(values));
-            this.props.addComment(this.props.dishId, values.rating, values.author, values.comment);
+            this.props.postComment(this.props.dishId, values.rating, values.author, values.comment);
         }
 
 
@@ -127,7 +127,7 @@ const minLength = (len) => (val) => val && (val.length >= len);
     }
 
 
-    function RenderComments({comments, addComment, dishId}) {
+    function RenderComments({comments, postComment, dishId}) {
         if (comments != null) {
             const comsRender = comments.map((coms) => {
                 return (
@@ -144,7 +144,7 @@ const minLength = (len) => (val) => val && (val.length >= len);
                     <ul className="list-unstyled">
                         {comsRender}
                     </ul>
-                    <CommentForm dishId={dishId} addComment={addComment} />
+                    <CommentForm dishId={dishId} postComment={postComment} />
                 </div>
             );
 
@@ -192,7 +192,7 @@ const minLength = (len) => (val) => val && (val.length >= len);
                         </div>
                         <div className="col-12 col-md-5 m-1">
                             <RenderComments comments={props.comments}
-                                            addComment={props.addComment}
+                                            postComment={props.postComment}
                                             dishId={props.dish.id}
                             />
                         </div>
